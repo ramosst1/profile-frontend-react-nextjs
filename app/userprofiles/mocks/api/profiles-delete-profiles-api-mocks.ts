@@ -3,11 +3,13 @@ import { IProfileResponse, IProfilesResponse } from '../../interfaces/profiles/p
 import profilesList from './profile-list';
 import { IMessageModel } from '../../interfaces/profiles/error-message-model';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
+
 export const profilesDeleteHandlers = [  
 
 
   //#region  delete  a profile 
-  rest.delete('http://localhost:54969/api/v1/profiles/:profileId', async (req, res, ctx) => {
+  rest.delete(BASE_URL + ':profileId', async (req, res, ctx) => {
  
     const {profileId }  = req.params;
 

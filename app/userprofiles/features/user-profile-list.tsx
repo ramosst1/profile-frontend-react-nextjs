@@ -250,7 +250,7 @@ export default function UserProfileList(
             </TableCell>
           </TableRow>
 
-          <TableRow>
+          <TableRow  key={profile.addresses[0].addressId}>
             <TableCell></TableCell>
             <TableCell style={{ paddingBottom: 0, paddingTop: 0}} colSpan={3}>
               <Collapse in={openProfileDetailRow} timeout="auto" unmountOnExit>

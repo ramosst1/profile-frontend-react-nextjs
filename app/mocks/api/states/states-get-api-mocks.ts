@@ -2,11 +2,12 @@ import { rest } from 'msw'
 import { IStatesResponse } from '../../../interfaces/states/states-responses';
 import { IStateModel } from '../../../interfaces/states/states-model';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_STATES
+
 export const statesGetApiMockHandlers = [  
 
-
   //#endregion get all profiles
-  rest.get('http://localhost:54969/api/v1/states/', async (req, res, ctx) => {
+  rest.get(BASE_URL, async (req, res, ctx) => {
 
         const states: IStateModel[] = 
         [

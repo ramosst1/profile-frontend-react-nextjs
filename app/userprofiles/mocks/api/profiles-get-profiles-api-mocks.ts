@@ -3,11 +3,13 @@ import { IProfileResponse, IProfilesResponse } from '../../interfaces/profiles/p
 import { IProfileModel } from '../../interfaces/profiles/profile-models';
 import profilesList from './profile-list';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
+
 export const profilesGetHandlers = [  
 
-
   //#endregion get all profiles
-  rest.get('http://localhost:54969/api/v1/profiles/', async (req, res, ctx) => {
+  
+  rest.get(BASE_URL, async (req, res, ctx) => {
 
         const profiles: IProfileModel[] = profilesList.getProfiles();
 
@@ -28,7 +30,7 @@ export const profilesGetHandlers = [
   //#endregion
 
   //#region  get a profile 
-  rest.get('http://localhost:54969/api/v1/profiles/:profileId', async (req, res, ctx) => {
+  rest.get(BASE_URL+':profileId', async (req, res, ctx) => {
  
     const { profileId} = req.params
 

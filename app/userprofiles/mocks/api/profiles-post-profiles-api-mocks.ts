@@ -2,10 +2,12 @@ import { rest } from 'msw'
 import { IProfileResponse } from '../../interfaces/profiles/profile-responses';
 import { IProfileModel, IProfileAddressModel, IProfileCreateModel } from '../../interfaces/profiles/profile-models';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
+
 export const profilesPostHandlers = [  
 
   //#endregion add a  profiles
-    rest.post<IProfileCreateModel, any>('http://localhost:54969/api/v1/profiles/', async (req, res, ctx) => {
+    rest.post<IProfileCreateModel, any>(BASE_URL, async (req, res, ctx) => {
 
     const createItem = await req.json<IProfileCreateModel>()
 

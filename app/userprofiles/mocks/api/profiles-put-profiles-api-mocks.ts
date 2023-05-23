@@ -2,11 +2,12 @@ import { rest } from 'msw'
 import { IProfileResponse } from '../../interfaces/profiles/profile-responses';
 import { IProfileModel, IProfileUpdateModel, IProfileAddressModel } from './../../interfaces/profiles/profile-models';
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
+
 export const profilesPutHandlers = [  
 
-
   //#endregion get all profiles
-    rest.put<IProfileUpdateModel, any>('http://localhost:54969/api/v1/profiles/', async (req, res, ctx) => {
+    rest.put<IProfileUpdateModel, any>(BASE_URL, async (req, res, ctx) => {
 
     const updateItem = await req.json<IProfileUpdateModel>()
 

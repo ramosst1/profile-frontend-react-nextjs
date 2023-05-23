@@ -214,7 +214,7 @@ export default function NavBarTop() {
                                 <MenuItem key={page.pageName} onClick={() => handleRouteToPageNavMenu(page.url)}
                                 >
                                     {page.icon}
-                                <Typography textAlign="center">{page.pageName}</Typography>
+                                    <Typography textAlign="center">{page.pageName}</Typography>
                                 </MenuItem>
                             ))}
                             </Menu>
@@ -248,7 +248,7 @@ export default function NavBarTop() {
                             </Typography>
 
                             {rightMenus.map((menuItem) => (
-                                <Button color="inherit"  sx={{color: menuItem.color, fontSize: 'small'}} 
+                                <Button color="inherit" key={menuItem.menuName}  sx={{color: menuItem.color, fontSize: 'small'}} 
                                     onClick={menuItem.eventButton}
                                 >
                                     {menuItem.icon}
