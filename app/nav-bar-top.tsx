@@ -160,44 +160,121 @@ export default function NavBarTop() {
 
     return (
     <> 
-        {/* <Router> */}
-            <Box sx={{ display: 'flex' }} >
-                <CssBaseline />
-                <AppBar component="nav" style={{background: 'linear-gradient(90deg, #06224e 10%, #0d47a1 45%, #06224e 95%)'}}  >
-                    <Container maxWidth="xl" > 
-                        <Toolbar disableGutters>
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="a"
-                                href="/"
-                                sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 900,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                }}
+            <AppBar component="nav" style={{background: 'linear-gradient(90deg, #06224e 10%, #0d47a1 45%, #06224e 95%)'}}  >
+                <Container maxWidth="xl" > 
+                    <Toolbar disableGutters>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="a"
+                            href="/"
+                            sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 900,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            }}
+                        >
+                            &lt;Sample Website&gt;
+                        </Typography>
+
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            sx={{ color: '#dbffe0' }}
                             >
-                                &lt;Sample Website&gt;
+                            <MenuIcon />
+                            </IconButton>
+                            <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{ 
+                                display: { xs: 'block', md: 'none' }
+                            }}
+                            >
+                            {pageList.map((page) => (
+                                <MenuItem key={page.pageName} onClick={() => handleRouteToPageNavMenu(page.url)}
+                                >
+                                    {page.icon}
+                                <Typography textAlign="center">{page.pageName}</Typography>
+                                </MenuItem>
+                            ))}
+                            </Menu>
+                        </Box>
+
+                        <Typography
+                            variant="body2"
+                            noWrap
+                            component="a"
+                            href=""
+                            sx={{
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                            }}
+                        >
+                            &lt;Sample Website&gt; 
+                        </Typography>
+
+                        <Box sx={{ textAlign:'right', flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
+                        </Box>
+                        <Box sx={{flexGrow: 0, display: { xs: 'none', md: 'flex' } }} >
+
+                            <Typography style={{padding:10}}>
+                                {user?.userName && 'Welcome Back:'}  {user?.firstName}  {user?.lastName}
                             </Typography>
 
-                            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                                <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
-                                sx={{ color: '#dbffe0' }}
+                            {rightMenus.map((menuItem) => (
+                                <Button color="inherit"  sx={{color: menuItem.color, fontSize: 'small'}} 
+                                    onClick={menuItem.eventButton}
                                 >
-                                <MenuIcon />
-                                </IconButton>
-                                <Menu
+                                    {menuItem.icon}
+                                    {menuItem.menuName}
+                                </Button>
+                        ))}
+
+                        </Box>
+
+
+                        <Box sx={{ flexGrow: 1,  display: { xs: 'flex', md: 'none' } }}
+                        >
+                            <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenuRight}
+                            sx={{ color: '#dbffe0' }}
+                            
+                            >
+                            <MoreIcon />
+                            </IconButton>
+                            <Menu
                                 id="menu-appbar"
-                                anchorEl={anchorElNav}
+                                anchorEl={anchorElNavRight}
                                 anchorOrigin={{
                                     vertical: 'bottom',
                                     horizontal: 'left',
@@ -207,147 +284,65 @@ export default function NavBarTop() {
                                     vertical: 'top',
                                     horizontal: 'left',
                                 }}
-                                open={Boolean(anchorElNav)}
-                                onClose={handleCloseNavMenu}
+                                open={Boolean(anchorElNavRight)}
+                                onClose={handleCloseNavMenuRight}
                                 sx={{ 
                                     display: { xs: 'block', md: 'none' }
                                 }}
-                                >
-                                {pageList.map((page) => (
-                                    <MenuItem key={page.pageName} onClick={() => handleRouteToPageNavMenu(page.url)}
-                                    >
-                                        {page.icon}
-                                    <Typography textAlign="center">{page.pageName}</Typography>
-                                    </MenuItem>
-                                ))}
-                                </Menu>
-                            </Box>
-
-                            <Typography
-                                variant="body2"
-                                noWrap
-                                component="a"
-                                href=""
-                                sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                }}
                             >
-                                &lt;Sample Website&gt; 
-                            </Typography>
-
-                            <Box sx={{ textAlign:'right', flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
-                            </Box>
-                            <Box sx={{flexGrow: 0, display: { xs: 'none', md: 'flex' } }} >
-
-                                <Typography style={{padding:10}}>
-                                    {user?.userName && 'Welcome Back:'}  {user?.firstName}  {user?.lastName}
-                                </Typography>
-
+                                <MenuItem sx={{fontWeight:'bold', display:user?.userName??'none'}}>
+                                    {user?.firstName}  {user?.lastName}
+                                </MenuItem>
                                 {rightMenus.map((menuItem) => (
-                                    <Button color="inherit"  sx={{color: menuItem.color, fontSize: 'small'}} 
-                                        onClick={menuItem.eventButton}
+                                    <MenuItem key={menuItem.menuName} 
+                                    onClick= {menuItem.event} 
                                     >
                                         {menuItem.icon}
-                                        {menuItem.menuName}
-                                    </Button>
-                            ))}
-
-                            </Box>
-
-
-                            <Box sx={{ flexGrow: 1,  display: { xs: 'flex', md: 'none' } }}
-                            >
-                                <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenuRight}
-                                sx={{ color: '#dbffe0' }}
-                                
-                                >
-                                <MoreIcon />
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorElNavRight}
-                                    anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'left',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'left',
-                                    }}
-                                    open={Boolean(anchorElNavRight)}
-                                    onClose={handleCloseNavMenuRight}
-                                    sx={{ 
-                                        display: { xs: 'block', md: 'none' }
-                                    }}
-                                >
-                                    <MenuItem sx={{fontWeight:'bold', display:user?.userName??'none'}}>
-                                        {user?.firstName}  {user?.lastName}
+                                    <Typography textAlign="center">{menuItem.menuName}</Typography>
                                     </MenuItem>
-                                    {rightMenus.map((menuItem) => (
-                                        <MenuItem key={menuItem.menuName} 
-                                        onClick= {menuItem.event} 
-                                        >
-                                            {menuItem.icon}
-                                        <Typography textAlign="center">{menuItem.menuName}</Typography>
-                                        </MenuItem>
-                                    ))}
-                                </Menu>
-                            </Box>
-                        </Toolbar>
-                    </Container>
-                    <Container  maxWidth='xl'>
-                    <Box sx={{textAlign: 'left', flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
-                                {pageList.map((page) => (
-                                <Button
-                                    size='small'
-                                    key={page.pageName}
-                                    onClick={() => handleRouteToPageNavMenu(page.url)}
-                                    sx={{ my: 2, color: '#dbffe0' }}
-                                    startIcon = {page.icon}
-                                >
-                                    {page.pageName}
-                                </Button>
-
                                 ))}
-                    </Box>
-                    </Container>
-                </AppBar>
-                {/* <Box component="main" margin={{md:10,xs:1}}
-                    sx={{ width:'100%'}}
-                >
-                    <Toolbar />
-                    <Switch>
-                        <Route exact path="/">
-                            <Home />
-                        </Route>
-                        <Route exact path="/aboutus">
-                            <AboutUs />
-                        </Route>
-                        <Route path="/profiles/profiles">
-                            <UserProfiles />
-                        </Route>
-                    </Switch>
-                </Box> */}
-            </Box>
+                            </Menu>
+                        </Box>
+                    </Toolbar>
+                </Container>
+                <Container  maxWidth='xl'>
+                <Box sx={{textAlign: 'left', flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
+                            {pageList.map((page) => (
+                            <Button
+                                size='small'
+                                key={page.pageName}
+                                onClick={() => handleRouteToPageNavMenu(page.url)}
+                                sx={{ my: 2, color: '#dbffe0' }}
+                                startIcon = {page.icon}
+                            >
+                                {page.pageName}
+                            </Button>
 
-            {isOpenLoginModal && <LoginModal onClose={handleLoginCloseModal} onSignIn={handleLoginOnLoginModel} />}
+                            ))}
+                </Box>
+                </Container>
+            </AppBar>
+            {/* <Box component="main" margin={{md:10,xs:1}}
+                sx={{ width:'100%'}}
+            >
+                <Toolbar />
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route exact path="/aboutus">
+                        <AboutUs />
+                    </Route>
+                    <Route path="/profiles/profiles">
+                        <UserProfiles />
+                    </Route>
+                </Switch>
+            </Box> */}
 
-            {isOpenSignupModal && <LoginSignUpModal onCancel={handleLoginSignupCloseModal} onSignup={handleLoginOnSignupModel}/>}
+        {isOpenLoginModal && <LoginModal onClose={handleLoginCloseModal} onSignIn={handleLoginOnLoginModel} />}
 
-        {/* </Router> */}
+        {isOpenSignupModal && <LoginSignUpModal onCancel={handleLoginSignupCloseModal} onSignup={handleLoginOnSignupModel}/>}
+
     </>
     );
 };
