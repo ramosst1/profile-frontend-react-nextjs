@@ -7,7 +7,7 @@ import { ISignUpModel } from '../../interfaces/signup/signup-models';
 export const signupUserhandlers = [  
 
     //#region post to signup
-    rest.post<ISignUpRequest, ISignUpRequest>('http://localhost:54969/api/v1/signup/', async (req, res, ctx) => {
+    rest.post<ISignUpRequest, ISignUpRequest>('features/Login/api/signup/', async (req, res, ctx) => {
 
       const { firstName, lastName, userName, password} = await req.json<ISignUpRequest>()
 

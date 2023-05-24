@@ -4,7 +4,7 @@ import { ISignUpResponse } from "../interfaces/signup/signup-responses";
 
 class SignUpService{
 
-    private readonly ULR_BASE: string = 'http://localhost:54969/api/v1/signup/';
+    private readonly ULR_BASE: string = '/features/Login/api/signup/';
 
     public async SignUpAsync(signupRequest: ISignUpRequest) {
       return await httpAdapter.post<ISignUpResponse>(this.ULR_BASE, signupRequest);

@@ -3,7 +3,6 @@ import { IProfileResponse, IProfilesResponse } from '../../interfaces/profiles/p
 import profilesList from './profile-list';
 import { IMessageModel } from '../../interfaces/profiles/error-message-model';
 
-// const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
 const BASE_URL = '/userprofiles/api/profiles/';
 
 export const profilesDeleteHandlers = [  

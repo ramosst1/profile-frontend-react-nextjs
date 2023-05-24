@@ -6,7 +6,7 @@ import { IMessageModel } from '../../interfaces/error-messages-models';
 
 export const signinUserhandlers = [  
   //#endregion post to sign in
-  rest.post<ISignInRequest, ISignInRequest>('http://localhost:54969/api/v1/signin/', async (req, res, ctx) => {
+  rest.post<ISignInRequest, ISignInRequest>('/features/Login/api/signin/', async (req, res, ctx) => {
 
     const { userName, password} = await req.json<ISignInRequest>()
 

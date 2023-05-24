@@ -10,7 +10,7 @@ import { AuthProvider } from './context/AuthContext';
 
 if(process.env.NODE_ENV === 'development'){
   import('./mocks').then(({setupMock}) => {
-//    setupMock();
+    setupMock();
    })
 }
 

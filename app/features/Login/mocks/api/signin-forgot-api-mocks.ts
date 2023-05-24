@@ -5,7 +5,7 @@ import ISignInForgotResponse from '../../interfaces/signin-forgot/signin-forgot-
 
 export const signinForgotUserhandlers = [  
   //#endregion post to sign in
-  rest.post<ISignInForgotRequest, ISignInForgotRequest>('http://localhost:54969/api/v1/signin/forgot/', async (req, res, ctx) => {
+  rest.post<ISignInForgotRequest, ISignInForgotRequest>('/features/Login/api/signinforgot/', async (req, res, ctx) => {
 
     const { userName} = await req.json<ISignInForgotRequest>()
 
