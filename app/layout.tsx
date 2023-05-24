@@ -1,9 +1,7 @@
 'use client'
-import './globals.css'
+// import './globals.css'
 import { Inter } from 'next/font/google'
 import NavBarTop from './nav-bar-top'
-import {server} from './mocks/api/server'
-
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Box, CssBaseline, Toolbar } from '@mui/material';
 import { AuthProvider } from './context/AuthContext';
@@ -52,8 +50,8 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <html lang="en">
           <body>
-            <Box sx={{ display: 'flex' }} >
-              {/* <CssBaseline /> */}
+            {/* <Box sx={{ display: 'flex' }} > */}
+              <CssBaseline />
                 <NavBarTop/>
                 <Box component="main" margin={{md:10,xs:1}}
                     sx={{ width:'100%'}}
@@ -61,7 +59,7 @@ export default function RootLayout({
                     <Toolbar />
                     {children}
                 </Box>
-            </Box>
+            {/* </Box> */}
           </body>            
         </html>
       </ThemeProvider>

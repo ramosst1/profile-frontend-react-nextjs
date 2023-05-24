@@ -2,7 +2,6 @@ import { rest } from 'msw'
 import { IProfileResponse } from '../../interfaces/profiles/profile-responses';
 import { IProfileModel, IProfileUpdateModel, IProfileAddressModel } from './../../interfaces/profiles/profile-models';
 
-//const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
 const BASE_URL = '/userprofiles/api/profiles/';
 
 export const profilesPutHandlers = [  

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { IProfileResponse } from '@/app/userprofiles/interfaces/profiles/profile-responses';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILES
 
 export async function GET(request, {params}) {
 
@@ -25,6 +25,7 @@ export async function DELETE(request, {params}) {
   const {profileId} = params;
 
   const res = await fetch(BASE_URL+profileId, {
+    method: "DELETE",
     headers: {
       'Content-Type': 'application/json',
       'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
