@@ -5,7 +5,7 @@ import { IApiResponse } from "../interfaces/profiles/api-response";
 
 class ProfilesService {
 
-    private readonly ULR_BASE: string = 'http://localhost:54969/api/v1/profiles/';
+    private readonly ULR_BASE: string = '/userprofiles/api/profiles/';
 
     public async getProfilesAsync() {
 

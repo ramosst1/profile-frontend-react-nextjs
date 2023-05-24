@@ -3,7 +3,7 @@ import { IProfileResponse, IProfilesResponse } from '../../interfaces/profiles/p
 import { IProfileModel } from '../../interfaces/profiles/profile-models';
 import profilesList from './profile-list';
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_PROFILE;
+const BASE_URL = '/userprofiles/api/profiles/';
 
 export const profilesGetHandlers = [  
 

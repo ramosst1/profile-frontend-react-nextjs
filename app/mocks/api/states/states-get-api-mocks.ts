@@ -7,7 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL_SERVICES_STATES
 export const statesGetApiMockHandlers = [  
 
   //#endregion get all profiles
-  rest.get(BASE_URL, async (req, res, ctx) => {
+  rest.get('/api/states/', async (req, res, ctx) => {
 
         const states: IStateModel[] = 
         [

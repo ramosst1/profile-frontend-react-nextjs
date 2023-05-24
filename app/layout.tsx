@@ -2,16 +2,17 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import NavBarTop from './nav-bar-top'
+import {server} from './mocks/api/server'
 
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Box, CssBaseline, Toolbar } from '@mui/material';
-// import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 
 if(process.env.NODE_ENV === 'development'){
-  const { worker} = require('./mocks/api/browser')
-  worker.start()
+  import('./mocks').then(({setupMock}) => {
+//    setupMock();
+   })
 }
-
 
 const theme = createTheme({
   palette: {
@@ -47,21 +48,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ThemeProvider theme={theme}>
-      <html lang="en">
-        <body>
-          <Box sx={{ display: 'flex' }} >
-            {/* <CssBaseline /> */}
-              <NavBarTop/>
-              <Box component="main" margin={{md:10,xs:1}}
-                  sx={{ width:'100%'}}
-              >
-                  <Toolbar />
-                  {children}
-              </Box>
-          </Box>
-        </body>            
-      </html>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <html lang="en">
+          <body>
+            <Box sx={{ display: 'flex' }} >
+              {/* <CssBaseline /> */}
+                <NavBarTop/>
+                <Box component="main" margin={{md:10,xs:1}}
+                    sx={{ width:'100%'}}
+                >
+                    <Toolbar />
+                    {children}
+                </Box>
+            </Box>
+          </body>            
+        </html>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }

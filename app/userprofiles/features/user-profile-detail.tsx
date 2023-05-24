@@ -211,7 +211,6 @@ export default function UserProfileDetail(this: any, props: { xs?:any; profile?:
 
   async function populateCountryStatesAsync(){
 
-
     if(countryStatesList.length = 0) return;
 
     try {
