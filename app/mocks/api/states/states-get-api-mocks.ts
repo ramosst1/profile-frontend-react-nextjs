@@ -2,6 +2,7 @@ import { rest } from 'msw'
 import { IStatesResponse } from '../../../interfaces/states/states-responses';
 import { IStateModel } from '../../../interfaces/states/states-model';
 
+
 export const statesGetApiMockHandlers = [  
 
   //#endregion get all profiles

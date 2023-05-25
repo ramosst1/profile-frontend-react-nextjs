@@ -1,12 +1,22 @@
-const IS_BROWSER = typeof window !== 'undefined'
 
-export const setupMock = async () => {
+export async function setupMock(){
 
-    if(IS_BROWSER){
+    if(typeof window !== 'undefined'){
         const {worker} = await import('./api/browser')
-        worker.start();
+        worker.start({onUnhandledRequest: 'bypass' });
     } else {
         const { server} = await import('./api/server')
-        server.listen()
+        server.listen({onUnhandledRequest: 'bypass' })
     }
 }
+
+
+// export const setupMock = async () => {
+//     if (typeof window === 'undefined') { 
+//         const { server } = await import('./api/server') 
+//         server.listen({onUnhandledRequest: 'bypass' }) } 
+//     else { 
+//         const { worker } = await import('./api/browser') 
+//         worker.start({ onUnhandledRequest: 'bypass' }) 
+//     } 
+// }
