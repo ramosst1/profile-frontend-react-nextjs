@@ -1,5 +1,3 @@
-import { NextResponse } from "next/server";
-
 class httpAdapter {
 
     async get<TResponse>(url: string) {

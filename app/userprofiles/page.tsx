@@ -5,9 +5,7 @@ import UserProfileList from './features/user-profile-list';
 import UserProfileDetail from './features/user-profile-detail';
 import {
   Grid,
-  Paper,
   Box,
-  Hidden
 } from "@mui/material";
 import { IProfileModel } from './interfaces/profiles/profile-models';
 import { IProfileResponse} from './interfaces/profiles/profile-responses';
@@ -64,10 +62,8 @@ export default function page() {
   return (
     <>
       <Grid container spacing={1}>
-          <Grid item xs={12}>
+          <Grid item xs={6}>
             <h3>User Profiles</h3>
-          </Grid>
-          <Grid item xs={12} md={6} >
             <UserProfileList
               onProfileEdit={handleEditProfile}
               onProfileDelete={handleDeleteDialogOpen}
@@ -75,49 +71,43 @@ export default function page() {
               onProfileAddCommitted={createdProfileCommitted}
               onProfileUpdateCommitted={updatedProfileCommitted}
             />
+
           </Grid>
           <Grid item md={6} style={{maxHeight: '100vh', overflow: 'auto'}} 
-            // sx={{display: openProfileDetail ? '' : 'none'}} mt={14}
           >
-            {/* <Grid container sx={{display: openProfileDetail ? '' : 'none'}}>
-                  <Box sx={{  display: { xs: 'none', md: 'flex' }, }} mt={16}
-            > */}
-
-          {/* {openProfileDetail && (<> */}
-            <Box
-              color="white"
-              bgcolor="primary.main"
-              style={{ borderRadius: "15px 15px 0px 0px", padding: 5 }}
-              sx={{  display: { xs: 'none', md: 'flex' }, }}                    
-            >
-              <strong>Profile Detail</strong>
-            </Box>
-            <Box
-              style={{
-                backgroundColor: "whitesmoke",
-                padding: 5,
-                borderRadius: "0px 0px 15px 15px",
-                width:'100%',
-                maxHeight: '100vh', overflow: 'auto'                
-
-              }}
-              sx={{  display: { xs: 'none', md: 'flex' }, }}                    
-              >
+            <Box sx={{display: openProfileDetail ? '' : 'none', overflow: 'auto'}}>
               <Box
+                color="white"
+                bgcolor="primary.main"
+                style={{ borderRadius: "15px 15px 0px 0px", padding: 5 }}
+                sx={{  display: { xs: 'none', md: 'flex' }, }}                    
               >
-                <UserProfileDetail 
-                  key={keyProfileKey}
-                  profile={selectedProfile}
-                  onUpdate={handleProfileDetailUpdate}
-                  onCancel={handleProfileDetailCancel}
-                  onCreate={handleProfileDetailCreate}
-                />
+                <strong>Profile Detail</strong>
+              </Box>
+              <Box
+                style={{
+                  backgroundColor: "whitesmoke",
+                  padding: 5,
+                  borderRadius: "0px 0px 15px 15px",
+                  width:'100%',
+                  maxHeight: '100vh', overflow: 'auto'            
 
+                }}
+                sx={{  display: { xs: 'none', md: 'flex' }, }}                    
+                >
+                <Box
+                >
+                  <UserProfileDetail 
+                    key={keyProfileKey}
+                    profile={selectedProfile}
+                    onUpdate={handleProfileDetailUpdate}
+                    onCancel={handleProfileDetailCancel}
+                    onCreate={handleProfileDetailCreate}
+                  />
+
+                </Box>
               </Box>
             </Box>
-          {/* </>)} */}
-
-
           </Grid>
       </Grid>
       <ModalWindow xs={{ flexGrow: 1,  display: { xs: 'flex', md: 'none' } }}  open={openProfileDetail ? true : false} title='Profile Detail ' width='40%' onClose={handleProfileDetailCancel} >
