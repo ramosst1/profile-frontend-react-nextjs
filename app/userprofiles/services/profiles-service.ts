@@ -8,7 +8,7 @@ class ProfilesService {
     private readonly ULR_BASE: string = '/userprofiles/api/profiles/';
 
     public async getProfilesAsync() {
-      return await httpAdapter.get<IProfilesResponse>(this.ULR_BASE+'/profiles');//  NOTE: Temporary work around for Mock Server Worker
+      return await httpAdapter.get<IProfilesResponse>(this.ULR_BASE);//  NOTE: Temporary work around for Mock Server Worker
     }
 
     public async getProfileAsync(profileId:number) {

@@ -14,6 +14,5 @@ export async function GET() {
 
   const data = await res.json() as IStatesResponse;
  
-  return NextResponse.json(data );
-
+  return NextResponse.json(data);
 }

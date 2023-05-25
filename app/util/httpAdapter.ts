@@ -1,10 +1,23 @@
+import { NextResponse } from "next/server";
+
 class httpAdapter {
 
     async get<TResponse>(url: string) {
 
-        const response = await fetch(url);
-        const data = await response.json();
-        return data as TResponse;
+      const res = await fetch(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+        },
+      });
+    
+      const data = await res.json() as TResponse;
+     
+      return data as TResponse;
+
+        // const response = await fetch(url);
+        // const data = await response.json();
+        // return data as TResponse;
 
     }
   
@@ -14,7 +27,8 @@ class httpAdapter {
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
         },
   
         body: JSON.stringify(data)
@@ -30,7 +44,8 @@ class httpAdapter {
         method: "PUT",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
         },
   
         body: JSON.stringify(data)
@@ -42,9 +57,13 @@ class httpAdapter {
   
     async delete<TResponse>(url: string) {
         const response = await fetch(
-        url,
-        {
-            method: "DELETE"
+        url,{
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+          }    
         }
         );
 
