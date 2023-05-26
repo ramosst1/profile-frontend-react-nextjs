@@ -75,7 +75,7 @@ export default function page() {
             />
 
           </Grid>
-          <Grid item md={8} style={{maxHeight: '100vh', overflow: 'auto', paddingTop:'70px'}} 
+          <Grid item md={8} style={{maxHeight: '100vh', paddingTop:'70px'}} 
           >
             <Box>
               <Box
@@ -84,13 +84,12 @@ export default function page() {
                   padding: 0,
                   borderRadius: "15px 15px 15px 15px",
                   width:'100%',
-                  maxHeight: '100vh', 
-                  overflow: 'auto',
+                  maxHeight: '100vh'
                 }}
               >
                 <Box
                 >
-                  <DynamicModalWindow open={openProfileDetail} title='Profile Detail' modalWidth="90%" onClose={handleProfileDetailCancel}>
+                  <DynamicModalWindow open={openProfileDetail} title='Profile Detail' modalWidth="95%" onClose={handleProfileDetailCancel}>
                     <UserProfileDetail 
                       key={keyProfileKey}
                       profile={selectedProfile}

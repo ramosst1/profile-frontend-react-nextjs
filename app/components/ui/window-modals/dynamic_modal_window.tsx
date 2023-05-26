@@ -2,7 +2,6 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 
-// export function DynamicModalWindow(props: {xs?: any , open: boolean, title:string, width:string, onClose:any, children:any}) {
 export function DynamicModalWindow(props: {open: boolean,title?:string, modalWidth?:string, onClose?:any, children:any}) {
  
     useEffect(() => {

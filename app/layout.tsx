@@ -32,9 +32,6 @@ const theme = createTheme({
 });
 
 
-
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata = {
   title: 'Sample Site',
   description: 'This is a sample site.',
