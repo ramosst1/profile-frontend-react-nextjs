@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { IProfileModel } from './interfaces/profiles/profile-models';
 import { IProfileResponse} from './interfaces/profiles/profile-responses';
-import ModalWindow from '../components/ui/window-modals/modal_window';
+import { DynamicModalWindow } from '../components/ui/window-modals/dynamic_modal_window';
 
 export default function page() {
 
@@ -62,8 +62,10 @@ export default function page() {
   return (
     <>
       <Grid container spacing={1}>
-          <Grid item xs={6}>
-            <h3>User Profiles</h3>
+           <Grid item xs={12} >
+             <h3>User Profiles</h3>
+            </Grid>
+            <Grid item xs={12} md={4} >
             <UserProfileList
               onProfileEdit={handleEditProfile}
               onProfileDelete={handleDeleteDialogOpen}
@@ -73,52 +75,35 @@ export default function page() {
             />
 
           </Grid>
-          <Grid item md={6} style={{maxHeight: '100vh', overflow: 'auto'}} 
+          <Grid item md={8} style={{maxHeight: '100vh', overflow: 'auto', paddingTop:'70px'}} 
           >
-            <Box sx={{display: openProfileDetail ? '' : 'none', overflow: 'auto'}}>
-              <Box
-                color="white"
-                bgcolor="primary.main"
-                style={{ borderRadius: "15px 15px 0px 0px", padding: 5 }}
-                sx={{  display: { xs: 'none', md: 'flex' }, }}                    
-              >
-                <strong>Profile Detail</strong>
-              </Box>
+            <Box>
               <Box
                 style={{
                   backgroundColor: "whitesmoke",
-                  padding: 5,
-                  borderRadius: "0px 0px 15px 15px",
+                  padding: 0,
+                  borderRadius: "15px 15px 15px 15px",
                   width:'100%',
-                  maxHeight: '100vh', overflow: 'auto'            
-
+                  maxHeight: '100vh', 
+                  overflow: 'auto',
                 }}
-                sx={{  display: { xs: 'none', md: 'flex' }, }}                    
-                >
+              >
                 <Box
                 >
-                  <UserProfileDetail 
-                    key={keyProfileKey}
-                    profile={selectedProfile}
-                    onUpdate={handleProfileDetailUpdate}
-                    onCancel={handleProfileDetailCancel}
-                    onCreate={handleProfileDetailCreate}
-                  />
-
+                  <DynamicModalWindow open={openProfileDetail} title='Profile Detail' modalWidth="90%" onClose={handleProfileDetailCancel}>
+                    <UserProfileDetail 
+                      key={keyProfileKey}
+                      profile={selectedProfile}
+                      onUpdate={handleProfileDetailUpdate}
+                      onCancel={handleProfileDetailCancel}
+                      onCreate={handleProfileDetailCreate}
+                    />
+                  </DynamicModalWindow>
                 </Box>
               </Box>
             </Box>
           </Grid>
       </Grid>
-      <ModalWindow xs={{ flexGrow: 1,  display: { xs: 'flex', md: 'none' } }}  open={openProfileDetail ? true : false} title='Profile Detail ' width='40%' onClose={handleProfileDetailCancel} >
-        <UserProfileDetail
-          key={keyProfileKey}
-          profile={selectedProfile}
-          onUpdate={handleProfileDetailUpdate}
-          onCancel={handleProfileDetailCancel}
-          onCreate={handleProfileDetailCreate}
-        />
-      </ModalWindow>
     </>
   )
 

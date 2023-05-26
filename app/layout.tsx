@@ -1,5 +1,5 @@
 'use client'
-// import './globals.css'
+import './globals.css'
 import { Inter } from 'next/font/google'
 import NavBarTop from './nav-bar-top'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -50,7 +50,6 @@ export default function RootLayout({
       <ThemeProvider theme={theme}>
         <html lang="en">
           <body>
-            {/* <Box sx={{ display: 'flex' }} > */}
               <CssBaseline />
                 <NavBarTop/>
                 <Box component="main" margin={{md:10,xs:1}}
@@ -59,7 +58,6 @@ export default function RootLayout({
                     <Toolbar />
                     {children}
                 </Box>
-            {/* </Box> */}
           </body>            
         </html>
       </ThemeProvider>
