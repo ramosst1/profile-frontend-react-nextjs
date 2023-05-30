@@ -31,7 +31,6 @@ export default function Home() {
         direction= {{md: 'row', xs: 'column'}}
         alignItems="center"      
         spacing={3} 
-        width='90%'
       >
           <Grid item md={4} xs={12}>
           <Card sx={cardStyle}>

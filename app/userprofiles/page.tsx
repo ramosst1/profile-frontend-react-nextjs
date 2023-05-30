@@ -59,6 +59,16 @@ export default function page() {
     setSelectedProfile(undefined);
   };
 
+  const dynamicModalStyle = {
+    boxShadow: 10,
+    borderTopLeftRadius: 11,
+    borderTopRightRadius: 11,
+    borderBottomLeftRadius: 11,
+    borderBottomRightRadius: 11,
+    padding: 2,
+    // background: 'linear-gradient(#F8F8F8, white);'
+  }
+
   return (
     <>
       <Grid container spacing={1}>
@@ -80,16 +90,20 @@ export default function page() {
             <Box>
               <Box
                 style={{
-                  backgroundColor: "whitesmoke",
                   padding: 0,
-                  borderRadius: "15px 15px 15px 15px",
                   width:'100%',
                   maxHeight: '100vh'
                 }}
               >
                 <Box
+                  sx={{
+                    borderTopLeftRadius: 11,
+                    borderTopRightRadius: 11,
+                    borderBottomLeftRadius: 11,
+                    borderBottomRightRadius: 11
+                  }}
                 >
-                  <DynamicModalWindow open={openProfileDetail} title='Profile Detail' modalWidth="95%" onClose={handleProfileDetailCancel}>
+                  <DynamicModalWindow sx={dynamicModalStyle} open={openProfileDetail} title='PROFILE DETAIL' modalWidth="95%" onClose={handleProfileDetailCancel}>
                     <UserProfileDetail 
                       key={keyProfileKey}
                       profile={selectedProfile}

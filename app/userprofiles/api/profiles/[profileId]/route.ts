@@ -10,7 +10,7 @@ export async function GET(request, {params}) {
   const res = await fetch(BASE_URL+profileId, {
     headers: {
       'Content-Type': 'application/json',
-      'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY,
+      'API-Key': process.env.DATA_API_KEY,
       'CACHE': 'no-store'
     },
   });
@@ -28,7 +28,7 @@ export async function DELETE(request, {params}) {
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json',
-      'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+      'API-Key': process.env.DATA_API_KEY
     },
   });
 

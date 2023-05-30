@@ -200,7 +200,7 @@ export default function UserProfileList(
     
       return (
         <>
-          <TableRow key={profile.profileId} >
+          <TableRow key={profile.profileId} style={{backgroundColor:'e0f2f1'}} >
             <TableCell style={{borderBottom: 0}}>
               <IconButton
                 aria-label="expand row"
@@ -299,35 +299,26 @@ export default function UserProfileList(
                     </Tabs>
                   </Grid>
                   <Grid item xs={3} style={{textAlign:"right", whiteSpace:'nowrap' }} >
+                    <Button 
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      style={{ display: errorMessages.length > 0? 'none': '',  whiteSpace:'nowrap', paddingTop:0, paddingBottom:0, paddingLeft: 4, paddingRight:4, margin: 0, borderRadius: 25 }}
+                      onClick={handleAddProfile}
+                      startIcon={<PersonAddIcon />}
+                    >
+                      Add Profile
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
 
               <TableContainer
                 component={Paper}
-                sx={{ maxHeight: {md: 560, xs: 400} }}
+                sx={{ maxHeight: {md: 560, xs: 400}, boxShadow: 10}}
                 style={{ borderRadius: "15px" }}
               >
                 <Table size="small" aria-label="a dense table" stickyHeader>
-                  <TableHead >
-                    <TableRow >
-                    <StyledTableCell color='primary.main' style={{width:1}} ></StyledTableCell>
-                      <StyledTableCell color='primary.main' >Name</StyledTableCell>
-                      <StyledTableCell align="center" style={{ width: 150 }}>
-                        <Button 
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          style={{ whiteSpace:'nowrap', paddingTop:0, paddingBottom:0, paddingLeft: 4, paddingRight:4, margin: 0, borderRadius: 25 }}
-                          onClick={handleAddProfile}
-                          startIcon={<PersonAddIcon />}
-                        >
-                          Add Profile
-                        </Button>
-                        
-                      </StyledTableCell>
-                    </TableRow>
-                  </TableHead>
                   <TableBody>
                     {getProfileFilters().map((profile) => (
                       <>

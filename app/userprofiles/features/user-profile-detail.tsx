@@ -235,8 +235,8 @@ export default function UserProfileDetail(this: any, props: { xs?:any; profile?:
       autoComplete="off" 
       onSubmit={handleSubmit}
       >
-          <Grid container spacing={2} >
-            <Grid >
+          <Grid container spacing={.5} >
+            <Grid item xs={12} spacing={0} >
               <ErrorMessagesDisplay errorMessages={errorMessages} />
             </Grid>
             <Grid item xs={12} >
@@ -334,7 +334,7 @@ export default function UserProfileDetail(this: any, props: { xs?:any; profile?:
                 sx={{maxWidth:'100%'}}
               />
             </Grid>
-            <Grid  item  xs={12} md={6} >
+            <Grid  item  xs={12} md={6} sx={{textAlign:'left'}} >
               <FormControl
                 required 
               >

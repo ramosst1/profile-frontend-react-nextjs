@@ -6,8 +6,8 @@ export default function ErrorMessagesDisplay(props: {errorMessages: IErrorMessag
 
     return (
         <>
-              <Box color="error.main">
-                <ul >
+              <Box color="error.main" sx={{textAlign:'left'}} >
+                <ul style={{margin:0}} >
                   {props.errorMessages.map(errorMessage => (
                     <li>{errorMessage.message}</li>
                   ))}

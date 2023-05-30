@@ -7,7 +7,7 @@ export async function GET() {
     // const res = await fetch(BASE_URL, {
     //   headers: {
     //     'Content-Type': 'application/json',
-    //     'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY,
+    //     'API-Key': process.env.DATA_API_KEY,
     //     'CACHE': 'no-store'
     //   },
     // });

@@ -1,3 +1,5 @@
+'server only'
+
 class httpAdapter {
 
     async get<TResponse>(url: string) {
@@ -5,10 +7,12 @@ class httpAdapter {
       const res = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
-          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+          'API-Key': process.env.DATA_API_KEY
         },
       });
-    
+     
+      console.log(process.env.DATA_API_KEY)
+
       const data = await res.json() as TResponse;
      
       return data as TResponse;
@@ -26,7 +30,7 @@ class httpAdapter {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+          'API-Key': process.env.DATA_API_KEY
         },
   
         body: JSON.stringify(data)
@@ -43,7 +47,7 @@ class httpAdapter {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+          'API-Key': process.env.DATA_API_KEY
         },
   
         body: JSON.stringify(data)
@@ -60,7 +64,7 @@ class httpAdapter {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            'API-Key': process.env.NEXT_PUBLIC_DATA_API_KEY
+            'API-Key': process.env.DATA_API_KEY
           }    
         }
         );
