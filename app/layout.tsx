@@ -1,6 +1,5 @@
 'use client'
 import './globals.css'
-import { Inter } from 'next/font/google'
 import NavBarTop from './nav-bar-top'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Box, CssBaseline, Toolbar } from '@mui/material';
